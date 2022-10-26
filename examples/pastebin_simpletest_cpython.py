@@ -8,6 +8,7 @@ import adafruit_requests as requests
 from adafruit_pastebin.pastebin import PasteBin, ExpirationSetting, PrivacySetting
 
 from settings import secrets
+
 auth_key = secrets["auth_key"]
 
 session = requests.Session(socket, ssl_context=ssl.create_default_context())

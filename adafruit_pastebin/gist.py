@@ -24,6 +24,7 @@ except ImportError:
 
 POST_URL = "https://api.github.com/gists"
 
+
 class Gist(_Pastebin):
     """Pastebin API for GitHub Gists"""
 
@@ -42,10 +43,7 @@ class Gist(_Pastebin):
             "Authorization": f"Bearer {self._auth_key}",
         }
 
-        data = {
-            "public": public,
-            "files": {filename: {"content": str(content)}}
-        }
+        data = {"public": public, "files": {filename: {"content": str(content)}}}
 
         if description is not None:
             data["description"] = description

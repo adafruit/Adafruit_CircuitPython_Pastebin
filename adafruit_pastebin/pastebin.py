@@ -65,7 +65,7 @@ class PasteBin(_Pastebin):
             "api_option": "paste",
             "api_paste_code": str(content),
             "api_paste_private": privacy,
-            "api_paste_expire_date": expiration
+            "api_paste_expire_date": expiration,
         }
         if name is not None:
             data["api_paste_name"] = name

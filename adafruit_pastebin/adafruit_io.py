@@ -25,14 +25,19 @@ except ImportError:
 
 POST_URL = "https://io.adafruit.com/api/v2/{username}/feeds/{feed_key}/data"
 
+
 class AIOPastebin(_Pastebin):
     """Pastebin API for Adafruit IO"""
 
-    def __init__(self, session: Session, auth_key: str, *, username: str, feed_key: str) -> None:
+    def __init__(
+        self, session: Session, auth_key: str, *, username: str, feed_key: str
+    ) -> None:
         super().__init__(session, auth_key)
         self._username = username
         self._feed_key = feed_key
-        self._post_url = f"https://io.adafruit.com/api/v2/{username}/feeds/{feed_key}/data"
+        self._post_url = (
+            f"https://io.adafruit.com/api/v2/{username}/feeds/{feed_key}/data"
+        )
 
     def paste(
         self,

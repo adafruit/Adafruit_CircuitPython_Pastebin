@@ -8,15 +8,13 @@ import adafruit_requests as requests
 from adafruit_pastebin.adafruit_io import AIOPastebin
 
 from settings import secrets
+
 auth_key = secrets["auth_key"]
 
 session = requests.Session(socket, ssl_context=ssl.create_default_context())
 
 pastebin = AIOPastebin(
-    session,
-    auth_key,
-    username="username",
-    feed_key="existing_feedkey"
+    session, auth_key, username="username", feed_key="existing_feedkey"
 )
 paste_url = pastebin.paste(
     "This is a test paste!",
