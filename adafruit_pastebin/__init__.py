@@ -28,7 +28,7 @@ try:
     from adafruit_requests import Session
 
     class SupportsStr(Protocol):
-        """Protocol type for anything that supports the `str()` method"""
+        """Protocol type for anything that supports the :py:meth:`str()` method"""
 
         def __str__(self) -> str:  # pylint: disable=invalid-str-returned
             ...

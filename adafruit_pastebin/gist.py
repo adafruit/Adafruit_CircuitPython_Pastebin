@@ -26,7 +26,15 @@ POST_URL = "https://api.github.com/gists"
 
 
 class Gist(_Pastebin):
-    """Pastebin API for GitHub Gists"""
+    """
+    Pastebin API for GitHub Gists.
+
+    :param Session session: An :py:class:~`adafruit_requests.Session`
+        to use for web connectiviy
+    :param str auth_key: The `GitHub Personal Access Token
+        <https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token>`_
+        to use for authentication
+    """
 
     def paste(
         self,
@@ -36,7 +44,16 @@ class Gist(_Pastebin):
         description: Optional[str] = None,
         public: bool = False,
     ) -> str:
-        """Paste content as a GitHub Gist"""
+        """
+        Paste content as a GitHub Gist and return the URL of the new gist.
+
+        :param content: Any string (or object that can be converted to a string)
+            to paste
+        :param str filename: (Optional) A filename for the gist content
+        :param str|None description: (Optional) A description for the gist
+        :param bool public: Whether the gist should be public (``True``) or
+            private (``False``)
+        """
 
         headers = {
             "Accept": "applciation/vnd.github+json",

@@ -17,7 +17,6 @@ from adafruit_pastebin import _Pastebin
 
 try:
     from typing import Optional
-    from typing_extensions import Literal
     from adafruit_pastebin import SupportsStr  # pylint: disable=ungrouped-imports
 except ImportError:
     pass
@@ -28,7 +27,16 @@ POST_URL = "http://pastebin.com/api/api_post.php"
 
 # pylint: disable=too-few-public-methods
 class PrivacySetting:
-    """Privacy settings"""
+    """
+    Enum-like class for privacy settings.
+
+    Valid options are:
+
+    * PUBLIC
+    * UNLISTED
+    * PRIVATE
+
+    """
 
     PUBLIC = "0"
     UNLISTED = "1"
@@ -37,7 +45,22 @@ class PrivacySetting:
 
 # pylint: disable=too-few-public-methods
 class ExpirationSetting:
-    """Expiration settings"""
+    """
+    Enum-like class for expiration settings.
+
+    Valid options are:
+
+    * NEVER
+    * TEN_MINUTES
+    * ONE_HOUR
+    * ONE_DAY
+    * ONE_WEEK
+    * TWO_WEEKS
+    * ONE_MONTH
+    * SIX_MONTHS
+    * ONE_YEAR
+
+    """
 
     NEVER = "N"
     TEN_MINUTES = "10M"
@@ -51,7 +74,14 @@ class ExpirationSetting:
 
 
 class PasteBin(_Pastebin):
-    """Pastebin API for PasteBin.com"""
+    """
+    Pastebin API for PasteBin.com.
+
+    :param Session session: An :py:class:~`adafruit_requests.Session`
+        to use for web connectiviy
+    :param str auth_key: The `PasteBin.com dev key <https://pastebin.com/doc_api#1>`_
+        to use for API accessibilty
+    """
 
     def paste(
         self,
@@ -59,10 +89,25 @@ class PasteBin(_Pastebin):
         *,
         name: Optional[str] = None,
         content_format: Optional[str] = None,
-        privacy: Literal["0", "1", "2"] = PrivacySetting.PUBLIC,
+        privacy: str = PrivacySetting.PUBLIC,
         expiration: str = ExpirationSetting.NEVER,
     ) -> str:
-        """Paste content to PasteBin.com"""
+        """
+        Paste content to PasteBin.com and return the URL of the new paste.
+
+        :param content: Any string (or object that can be converted to a string)
+            to paste
+        :param str|None name: (Optional) A name for paste
+        :param str|None content_format: (Optional) The formatting of the pasted content;
+            valid formats can be found `in the PasteBin.com API docs
+            <https://pastebin.com/doc_api#5>`_
+        :param str privacy: (Optional) The privacy setting of the paste, which must be a
+            valid option from :py:class:`~adafruit_pastebin.pastebin.PrivacySetting`;
+            default is public
+        :param str expiration: (Optional) When the paste will expire and be deleted,
+            which must be a valid option from
+            :py:class:`~adafruit_pastebin.pastebin.ExpirationSetting`; default is never
+        """
 
         data = {
             "api_dev_key": self._auth_key,

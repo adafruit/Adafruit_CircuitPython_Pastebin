@@ -27,7 +27,15 @@ POST_URL = "https://io.adafruit.com/api/v2/{username}/feeds/{feed_key}/data"
 
 
 class AIOPastebin(_Pastebin):
-    """Pastebin API for Adafruit IO"""
+    """
+    Pastebin API for Adafruit IO.
+
+    :param Session session: An :py:class:~`adafruit_requests.Session`
+        to use for web connectiviy
+    :param str auth_key: The Adafruit IO key to use for authentication
+    :param str username: The username associated with the ``auth_key``
+    :param str feed_key: The feed key of the feed to use for pasting
+    """
 
     def __init__(
         self, session: Session, auth_key: str, *, username: str, feed_key: str
@@ -43,7 +51,12 @@ class AIOPastebin(_Pastebin):
         self,
         content: SupportsStr,
     ) -> str:
-        """Pastes content to Adafruit IO"""
+        """
+        Paste content to Adafruit IO and returns the URL of the feed.
+
+        :param content: Any string (or object that can be converted to a string)
+            to paste
+        """
 
         payload = {
             "value": str(content),
