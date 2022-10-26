@@ -8,11 +8,11 @@ import adafruit_requests as requests
 from adafruit_pastebin.pastebin import PasteBin, ExpirationSetting, PrivacySetting
 
 from settings import secrets
-devkey = secrets["auth_key"]
+auth_key = secrets["auth_key"]
 
 session = requests.Session(socket, ssl_context=ssl.create_default_context())
 
-pastebin = PasteBin(session, devkey)
+pastebin = PasteBin(session, auth_key)
 paste_url = pastebin.paste(
     "This is a test paste!",
     name="My Test Paste",

@@ -8,11 +8,11 @@ import adafruit_requests as requests
 from adafruit_pastebin.gist import Gist
 
 from settings import secrets
-devkey = secrets["auth_key"]
+auth_key = secrets["auth_key"]
 
 session = requests.Session(socket, ssl_context=ssl.create_default_context())
 
-pastebin = Gist(session, devkey)
+pastebin = Gist(session, auth_key)
 paste_url = pastebin.paste(
     "This is a test paste!",
     filename="test.txt",
