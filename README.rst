@@ -36,8 +36,6 @@ This is easily achieved by downloading
 or individual libraries can be installed using
 `circup <https://github.com/adafruit/circup>`_.
 
-`Purchase one from the Adafruit shop <http://www.adafruit.com/products/>`_
-
 Installing from PyPI
 =====================
 
