@@ -7,7 +7,11 @@ import socket
 import adafruit_requests as requests
 from adafruit_pastebin.adafruit_io import AIOPastebin
 
-from settings import secrets
+try:
+    from secrets import secrets
+except ImportError:
+    print("Please place your auth/dev key in a secrets.py file!")
+    raise
 
 auth_key = secrets["auth_key"]
 
