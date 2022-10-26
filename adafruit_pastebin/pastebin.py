@@ -18,7 +18,7 @@ from adafruit_pastebin import _Pastebin
 try:
     from typing import Optional
     from typing_extensions import Literal
-    from adafruit_pastebin import SupportsStr
+    from adafruit_pastebin import SupportsStr  # pylint: disable=ungrouped-imports
 except ImportError:
     pass
 
@@ -26,14 +26,18 @@ except ImportError:
 POST_URL = "http://pastebin.com/api/api_post.php"
 
 
+# pylint: disable=too-few-public-methods
 class PrivacySetting:
+    """Privacy settings"""
 
     PUBLIC = "0"
     UNLISTED = "1"
     PRIVATE = "2"
 
 
+# pylint: disable=too-few-public-methods
 class ExpirationSetting:
+    """Expiration settings"""
 
     NEVER = "N"
     TEN_MINUTES = "10M"
@@ -54,7 +58,7 @@ class PasteBin(_Pastebin):
         content: SupportsStr,
         *,
         name: Optional[str] = None,
-        format: Optional[str] = None,
+        content_format: Optional[str] = None,
         privacy: Literal["0", "1", "2"] = PrivacySetting.PUBLIC,
         expiration: str = ExpirationSetting.NEVER,
     ) -> str:
@@ -69,8 +73,8 @@ class PasteBin(_Pastebin):
         }
         if name is not None:
             data["api_paste_name"] = name
-        if format is not None:
-            data["api_paste_format"] = format
+        if content_format is not None:
+            data["api_paste_format"] = content_format
 
         response = self._session.post(POST_URL, data=data)
         if not response.text.startswith("http"):

@@ -17,7 +17,7 @@ import json
 from adafruit_pastebin import _Pastebin
 
 try:
-    import typing
+    import typing  # pylint: disable=unused-import
     from adafruit_pastebin import SupportsStr
     from adafruit_requests import Session
 except ImportError:
