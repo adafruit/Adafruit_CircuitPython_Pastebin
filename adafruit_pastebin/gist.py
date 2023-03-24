@@ -70,6 +70,6 @@ class Gist(_Pastebin):
         json_response = json.loads(response.text)
         try:
             return json_response["html_url"]
-        except KeyError:
+        except KeyError as err:
             error_message = json_response["message"]
-            raise RuntimeError(error_message)
+            raise RuntimeError(error_message) from err
