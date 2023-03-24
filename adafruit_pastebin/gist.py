@@ -72,4 +72,4 @@ class Gist(_Pastebin):
             return json_response["html_url"]
         except KeyError:
             error_message = json_response["message"]
-        raise RuntimeError(error_message)
+            raise RuntimeError(error_message)
