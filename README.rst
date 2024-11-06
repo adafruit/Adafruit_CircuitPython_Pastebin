@@ -79,7 +79,7 @@ following command to install:
 
 .. code-block:: shell
 
-    circup install pastebin
+    circup install adafruit_pastebin
 
 Or the following command to update an existing version:
 
