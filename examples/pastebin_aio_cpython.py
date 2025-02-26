@@ -2,18 +2,14 @@
 #
 # SPDX-License-Identifier: Unlicense
 
+from os import getenv
 import ssl
 import socket
 import adafruit_requests as requests
 from adafruit_pastebin.adafruit_io import AIOPastebin
 
-try:
-    from secrets import secrets
-except ImportError:
-    print("Please place your auth/dev key in a secrets.py file!")
-    raise
-
-auth_key = secrets["auth_key"]
+# Get PasteBin keys, ensure these are setup in your environment
+auth_key = getenv("auth_key")
 
 session = requests.Session(socket, ssl_context=ssl.create_default_context())
 
