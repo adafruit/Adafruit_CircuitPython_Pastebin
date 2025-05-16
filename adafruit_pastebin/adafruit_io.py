@@ -14,12 +14,15 @@ Pastebin API for Adafuit IO
 """
 
 import json
+
 from adafruit_pastebin import _Pastebin
 
 try:
-    import typing  # pylint: disable=unused-import
-    from adafruit_pastebin import SupportsStr
+    import typing
+
     from adafruit_requests import Session
+
+    from adafruit_pastebin import SupportsStr
 except ImportError:
     pass
 
@@ -37,15 +40,11 @@ class AIOPastebin(_Pastebin):
     :param str feed_key: The feed key of the feed to use for pasting
     """
 
-    def __init__(
-        self, session: Session, auth_key: str, *, username: str, feed_key: str
-    ) -> None:
+    def __init__(self, session: Session, auth_key: str, *, username: str, feed_key: str) -> None:
         super().__init__(session, auth_key)
         self._username = username
         self._feed_key = feed_key
-        self._post_url = (
-            f"https://io.adafruit.com/api/v2/{username}/feeds/{feed_key}/data"
-        )
+        self._post_url = f"https://io.adafruit.com/api/v2/{username}/feeds/{feed_key}/data"
 
     def paste(
         self,

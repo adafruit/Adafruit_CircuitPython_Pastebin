@@ -24,14 +24,14 @@ Implementation Notes
 
 try:
     from typing import List
-    from typing_extensions import Protocol
+
     from adafruit_requests import Session
+    from typing_extensions import Protocol
 
     class SupportsStr(Protocol):
         """Protocol type for anything that supports the :py:meth:`str()` method"""
 
-        def __str__(self) -> str:  # pylint: disable=invalid-str-returned
-            ...
+        def __str__(self) -> str: ...
 
 except ImportError:
     pass
@@ -40,7 +40,6 @@ __version__ = "0.0.0+auto.0"
 __repo__ = "https://github.com/adafruit/Adafruit_CircuitPython_Pastebin.git"
 
 
-# pylint: disable=too-few-public-methods
 class _Pastebin:
     """
     Generic paste bin class
