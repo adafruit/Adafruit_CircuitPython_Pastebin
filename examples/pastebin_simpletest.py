@@ -2,12 +2,14 @@
 #
 # SPDX-License-Identifier: Unlicense
 
-from os import getenv
 import ssl
-import wifi
-import socketpool
+from os import getenv
+
 import adafruit_requests as requests
-from adafruit_pastebin.pastebin import PasteBin, ExpirationSetting, PrivacySetting
+import socketpool
+import wifi
+
+from adafruit_pastebin.pastebin import ExpirationSetting, PasteBin, PrivacySetting
 
 # Get WiFi details and PasteBin keys, ensure these are setup in settings.toml
 ssid = getenv("CIRCUITPY_WIFI_SSID")

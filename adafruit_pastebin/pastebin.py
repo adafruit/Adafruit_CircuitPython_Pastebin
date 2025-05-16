@@ -17,7 +17,8 @@ from adafruit_pastebin import _Pastebin
 
 try:
     from typing import Optional
-    from adafruit_pastebin import SupportsStr  # pylint: disable=ungrouped-imports
+
+    from adafruit_pastebin import SupportsStr
 except ImportError:
     pass
 
@@ -25,7 +26,6 @@ except ImportError:
 POST_URL = "http://pastebin.com/api/api_post.php"
 
 
-# pylint: disable=too-few-public-methods
 class PrivacySetting:
     """
     Enum-like class for privacy settings.
@@ -43,7 +43,6 @@ class PrivacySetting:
     PRIVATE = "2"
 
 
-# pylint: disable=too-few-public-methods
 class ExpirationSetting:
     """
     Enum-like class for expiration settings.

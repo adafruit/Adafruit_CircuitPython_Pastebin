@@ -2,11 +2,13 @@
 #
 # SPDX-License-Identifier: Unlicense
 
-from os import getenv
-import ssl
 import socket
+import ssl
+from os import getenv
+
 import adafruit_requests as requests
-from adafruit_pastebin.pastebin import PasteBin, ExpirationSetting, PrivacySetting
+
+from adafruit_pastebin.pastebin import ExpirationSetting, PasteBin, PrivacySetting
 
 # Get PasteBin keys, ensure these are setup in your environment
 auth_key = getenv("auth_key")

@@ -14,10 +14,12 @@ Pastebin API for GitHub Gists
 """
 
 import json
+
 from adafruit_pastebin import _Pastebin
 
 try:
     from typing import Optional
+
     from adafruit_pastebin import SupportsStr
 except ImportError:
     pass
